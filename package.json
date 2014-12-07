@@ -1,0 +1,14 @@
+{
+  "name": "resource-fiddle-ui-test",
+  "version": "1.0.0",
+  "description": "",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.2.1",
+    "xnode": "^0.0.6",
+    "xnodecollection": "^0.0.1",
+    "xnodeui": "^0.0.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
