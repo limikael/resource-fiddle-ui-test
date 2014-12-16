@@ -29,11 +29,11 @@ function ResourcePaneView() {
 
 	var div;
 
-	div = new xnode.Div();
+	div = new xnode.Div("pane 1");
 	div.id = "tab1";
 	this.tabs.appendChild(div)
 
-	div = new xnode.Div();
+	div = new xnode.Div("pane 2");
 	div.id = "tab2";
 	this.tabs.appendChild(div)
 
