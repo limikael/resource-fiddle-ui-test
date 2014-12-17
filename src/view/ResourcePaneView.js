@@ -1,6 +1,9 @@
 var inherits = require("inherits");
 var xnode = require("xnode");
 var xnodeui = require("xnodeui");
+var xnodec = require("xnodecollection");
+var ResourcePaneTabHeaderView = require("./ResourcePaneTabHeaderView");
+var ResourcePaneTabContentView = require("./ResourcePaneTabContentView");
 
 /**
  * The left part of the app, showing the resources.
@@ -21,37 +24,29 @@ function ResourcePaneView() {
 	this.tabs.style.right = 5;
 	this.tabs.style.top = 10;
 	this.tabs.style.bottom = 10;
-
-	this.tabViews = [];
-
-	this.tabs.ul.appendChild(new xnode.Li("<a href='#tab1'>test1</a>"));
-	this.tabs.ul.appendChild(new xnode.Li("<a href='#tab2'>test2</a>"));
-
-	var div;
-
-	div = new xnode.Div("pane 1");
-	div.id = "tab1";
-	this.tabs.appendChild(div)
-
-	div = new xnode.Div("pane 2");
-	div.id = "tab2";
-	this.tabs.appendChild(div)
-
-	this.tabs.refresh();
-
 	this.appendChild(this.tabs);
+
+	this.tabsHeaderManager = new xnodec.CollectionViewManager(this.tabs.ul);
+	this.tabsHeaderManager.setItemRendererClass(ResourcePaneTabHeaderView);
+
+	this.tabsContentManager = new xnodec.CollectionViewManager(this.tabs);
+	this.tabsContentManager.setItemRendererClass(ResourcePaneTabContentView);
 }
 
 inherits(ResourcePaneView, xnode.Div);
 
 /**
- * Create a tab.
+ * Set tabs collection.
  */
-ResourcePaneView.prototype.createTab = function(label) {
-	var id = "resourcePaneTab" + this.tabViews.length;
+ResourcePaneView.prototype.setTabsCollection = function(collection) {
+	this.tabsHeaderManager.setDataSource(collection);
+	this.tabsContentManager.setDataSource(collection);
 
-	var li = new xnode.Li("<a href='" + id + "'>" + label + "</a>");
-	this.tabs.ul.appendChild(li);
+	var scope=this;
+
+	collection.on("change",function() {
+		scope.tabs.refresh();
+	});
 }
 
 module.exports = ResourcePaneView;

@@ -22,4 +22,8 @@ function AppView() {
 
 inherits(AppView, xnode.Div);
 
+AppView.prototype.getResourcePaneView = function() {
+	return this.resourcePaneView;
+}
+
 module.exports = AppView;
