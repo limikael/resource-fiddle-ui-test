@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 				}
 			},
 
-			"test/viewtest.bundle.js": ["test/viewtest.js"]
+			"test/fiddleui.bundle.js": ["src/fiddleui.js"]
 		},
 
 		pkg: grunt.file.readJSON('package.json')
