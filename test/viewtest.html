@@ -7,6 +7,10 @@
 		window.onload=function() {
 			var app = new fiddleui.App();
 			document.body.appendChild(app);
+
+			var model=app.getModel();
+			model.getCategoryCollection().addItem(new fiddleui.CategoryModel("hello"));
+			model.getCategoryCollection().addItem(new fiddleui.CategoryModel("world"));
 		}
 	</script>
 </html>

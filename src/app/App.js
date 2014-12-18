@@ -1,6 +1,8 @@
 var xnode = require("xnode");
 var inherits = require("inherits");
-var AppView=require("../view/AppView");
+var AppView = require("../view/AppView");
+var AppModel = require("../model/AppModel");
+var AppController = require("../controller/AppController");
 
 function App() {
 	xnode.Div.call(this);
@@ -11,9 +13,9 @@ function App() {
 	this.style.left = 0;
 	this.style.right = 0;
 
-	//	this.appModel=new AppModel();
 	this.appView = new AppView();
-	//	this.a
+	this.appModel = new AppModel();
+	this.appController = new AppController(this.appModel, this.appView);
 
 	this.appendChild(this.appView);
 }
