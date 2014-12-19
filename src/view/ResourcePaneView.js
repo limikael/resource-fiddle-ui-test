@@ -49,4 +49,12 @@ ResourcePaneView.prototype.setTabsCollection = function(collection) {
 	});
 }
 
+/**
+ * Get tabs header manager.
+ * @method getTabsHeaderManager
+ */
+ResourcePaneView.prototype.getTabsHeaderManager = function() {
+	return this.tabsHeaderManager;
+}
+
 module.exports = ResourcePaneView;

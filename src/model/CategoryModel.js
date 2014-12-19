@@ -1,9 +1,12 @@
+var AppModel = require("./AppModel");
+
 /**
  * Get category model.
  * @class CategoryModel
  */
-function CategoryModel() {
-	this.label = "";
+function CategoryModel(label) {
+	this.label = label;
+	this.parentModel = null;
 }
 
 /**
@@ -11,6 +14,7 @@ function CategoryModel() {
  * @method getParentModel
  */
 CategoryModel.prototype.setParentModel = function(value) {
+	console.log("setting parent: " + value);
 	this.parentModel = value;
 }
 
@@ -22,9 +26,12 @@ CategoryModel.prototype.getLabel = function() {
 	return this.label;
 }
 
+/**
+ * Get id.
+ */
 CategoryModel.prototype.getId = function() {
 	if (!this.id)
-		this.id = this.getApp().getNextId();
+		this.id = this.getAppModel().getNextId();
 
 	return this.id;
 }
@@ -34,10 +41,13 @@ CategoryModel.prototype.getId = function() {
  * @method getAppModel
  */
 CategoryModel.prototype.getAppModel = function() {
-	var p = this.parent;
+	if (!this.parentModel)
+		throw new Error("there is no parent!");
+
+	var p = this.parentModel;
 
 	while (p && !(p instanceof AppModel))
-		p = p.parent;
+		p = p.parentModel;
 
 	return p;
 }

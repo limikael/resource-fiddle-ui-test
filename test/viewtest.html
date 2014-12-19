@@ -9,8 +9,9 @@
 			document.body.appendChild(app);
 
 			var model=app.getModel();
-			model.getCategoryCollection().addItem(new fiddleui.CategoryModel("hello"));
-			model.getCategoryCollection().addItem(new fiddleui.CategoryModel("world"));
+			model.addCategoryModel(new fiddleui.CategoryModel("hello"));
+			model.addCategoryModel(new fiddleui.CategoryModel("world"));
+			model.addCategoryModel(new fiddleui.CategoryModel("test"));
 		}
 	</script>
 </html>

@@ -1,3 +1,4 @@
 fiddleui = {
-	App: require("./app/App")
+	App: require("./app/App"),
+	CategoryModel: require("./model/CategoryModel")
 };
