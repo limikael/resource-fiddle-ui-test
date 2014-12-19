@@ -5,7 +5,7 @@ function ResourcePaneTabHeaderController(tabHeaderView) {
 ResourcePaneTabHeaderController.prototype.setData = function(categoryModel) {
 	if (categoryModel) {
 		this.tabHeaderView.setLabel(categoryModel.getLabel());
-		this.tabHeaderView.setId(categoryModel.getId());
+		this.tabHeaderView.setTargetId(categoryModel.getId());
 	}
 }
 

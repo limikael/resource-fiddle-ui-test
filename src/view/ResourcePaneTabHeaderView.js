@@ -4,20 +4,14 @@ var inherits = require("inherits");
 function ResourcePaneTabHeaderView() {
 	xnode.Li.call(this);
 
-	this.id = null;
+	this.targetId = null;
 	this.label = null;
 }
 
 inherits(ResourcePaneTabHeaderView, xnode.Li);
 
-/*ResourcePaneTabHeaderView.prototype.setData = function(data) {
-	if (data) {
-		this.innerHTML = "<a href='#" + data.id + "'>" + data.label + "</a>";
-	}
-}*/
-
-ResourcePaneTabHeaderView.prototype.setId = function(id) {
-	this.id = id;
+ResourcePaneTabHeaderView.prototype.setTargetId = function(id) {
+	this.targetId = id;
 	this.refresh();
 }
 
@@ -27,9 +21,9 @@ ResourcePaneTabHeaderView.prototype.setLabel = function(label) {
 }
 
 ResourcePaneTabHeaderView.prototype.refresh = function() {
-	if (this.label && this.id) {
-		console.log("setting inner, label=" + this.label + " id: " + this.id);
-		this.innerHTML = "<a href='#" + this.id + "'>" + this.label + "</a>";
+	if (this.label && this.targetId) {
+		console.log("setting inner, label=" + this.label + " id: " + this.targetId);
+		this.innerHTML = "<a href='#" + this.targetId + "'>" + this.label + "</a>";
 	}
 }
 
