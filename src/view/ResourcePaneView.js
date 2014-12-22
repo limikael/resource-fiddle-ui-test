@@ -2,8 +2,8 @@ var inherits = require("inherits");
 var xnode = require("xnode");
 var xnodeui = require("xnodeui");
 var xnodec = require("xnodecollection");
-var ResourcePaneTabHeaderView = require("./ResourcePaneTabHeaderView");
-var ResourcePaneTabContentView = require("./ResourcePaneTabContentView");
+var ResourceTabHeaderView = require("./ResourceTabHeaderView");
+var ResourceTabView = require("./ResourceTabView");
 
 /**
  * The left part of the app, showing the resources.
@@ -27,10 +27,10 @@ function ResourcePaneView() {
 	this.appendChild(this.tabs);
 
 	this.tabsHeaderManager = new xnodec.CollectionViewManager(this.tabs.ul);
-	this.tabsHeaderManager.setItemRendererClass(ResourcePaneTabHeaderView);
+	this.tabsHeaderManager.setItemRendererClass(ResourceTabHeaderView);
 
 	this.tabsContentManager = new xnodec.CollectionViewManager(this.tabs);
-	this.tabsContentManager.setItemRendererClass(ResourcePaneTabContentView);
+	this.tabsContentManager.setItemRendererClass(ResourceTabView);
 }
 
 inherits(ResourcePaneView, xnode.Div);

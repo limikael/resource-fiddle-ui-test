@@ -1,4 +1,4 @@
-var ResourcePaneTabHeaderController = require("./ResourcePaneTabHeaderController");
+var ResourceTabHeaderController = require("./ResourceTabHeaderController");
 
 /**
  * App controller
@@ -9,7 +9,7 @@ function AppController(appModel, appView) {
 	this.appView = appView;
 
 	this.appView.getResourcePaneView().setTabsCollection(this.appModel.getCategoryCollection());
-	this.appView.getResourcePaneView().getTabsHeaderManager().setItemControllerClass(ResourcePaneTabHeaderController);
+	this.appView.getResourcePaneView().getTabsHeaderManager().setItemControllerClass(ResourceTabHeaderController);
 }
 
 module.exports = AppController;

@@ -14,7 +14,6 @@ function CategoryModel(label) {
  * @method getParentModel
  */
 CategoryModel.prototype.setParentModel = function(value) {
-	console.log("setting parent: " + value);
 	this.parentModel = value;
 }
 
