@@ -1,0 +1,8 @@
+AppView
+ResourcePaneView
+
+ResourceTabHeaderView
+ResourceCategoryHeaderView
+
+ResourceTabView
+ResourceCategoryView
