@@ -1,0 +1,18 @@
+<html style="padding: 0; margin: 0; height: 100%">
+	<link rel="stylesheet" href="semantic-ui/semantic.min.css">
+	<script src="jquery.min.js"></script>
+	<script src="semantic-ui/semantic.min.js"></script>
+	<script src="fiddleui.bundle.js"></script>
+	<script>
+		window.onload=function() {
+			var app = new fiddleui.App();
+			document.body.appendChild(app);
+
+			var model=app.getModel();
+			model.addCategoryModel(new fiddleui.CategoryModel("hello"));
+			model.addCategoryModel(new fiddleui.CategoryModel("world"));
+			model.addCategoryModel(new fiddleui.CategoryModel("test"));
+		}
+	</script>
+	<body style="padding: 0; margin: 0; height: 100%"></body>
+</html>

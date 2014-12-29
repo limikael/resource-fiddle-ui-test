@@ -1,6 +1,5 @@
 var xnode = require("xnode");
 var inherits = require("inherits");
-var xnodeui = require("xnodeui");
 
 function ResourceTabView() {
 	xnode.Div.call(this);

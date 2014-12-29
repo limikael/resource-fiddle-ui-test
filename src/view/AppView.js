@@ -1,6 +1,5 @@
 var inherits = require("inherits");
 var xnode = require("xnode");
-var xnodeui = require("xnodeui");
 var ResourcePaneView = require("./ResourcePaneView");
 
 /**
