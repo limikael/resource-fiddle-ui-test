@@ -1,4 +1,6 @@
 var AppModel = require("./AppModel");
+var EventDispatcher = require("yaed");
+var inherits = require("inherits");
 
 /**
  * Get category model.
@@ -7,7 +9,10 @@ var AppModel = require("./AppModel");
 function CategoryModel(label) {
 	this.label = label;
 	this.parentModel = null;
+	this.active = false;
 }
+
+inherits(CategoryModel, EventDispatcher);
 
 /**
  * Set reference to parent model.
@@ -26,16 +31,6 @@ CategoryModel.prototype.getLabel = function() {
 }
 
 /**
- * Get id.
- */
-CategoryModel.prototype.getId = function() {
-	if (!this.id)
-		this.id = this.getAppModel().getNextId();
-
-	return this.id;
-}
-
-/**
  * Get reference to app model.
  * @method getAppModel
  */
@@ -49,6 +44,32 @@ CategoryModel.prototype.getAppModel = function() {
 		p = p.parentModel;
 
 	return p;
+}
+
+/**
+ * Set active state.
+ * @method setActive
+ */
+CategoryModel.prototype.setActive = function(value) {
+	if (value == this.active)
+		return;
+
+	var siblings = this.parentModel.getCategoryCollection();
+
+	for (var i = 0; i < siblings.getLength(); i++)
+		if (siblings.getItemAt(i) != this)
+			siblings.getItemAt(i).setActive(false);
+
+	this.active = value;
+	this.trigger("change");
+}
+
+/**
+ * Is this category the active one?
+ * @method isActive
+ */
+CategoryModel.prototype.isActive = function() {
+	return this.active;
 }
 
 module.exports = CategoryModel;

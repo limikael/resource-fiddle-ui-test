@@ -2,28 +2,22 @@ var xnode = require("xnode");
 var inherits = require("inherits");
 
 function ResourceTabHeaderView() {
-	xnode.Li.call(this);
-
-	this.targetId = null;
-	this.label = null;
+	xnode.A.call(this);
+	this.className = "item";
 }
 
-inherits(ResourceTabHeaderView, xnode.Li);
-
-ResourceTabHeaderView.prototype.setTargetId = function(id) {
-	this.targetId = id;
-	this.refresh();
-}
+inherits(ResourceTabHeaderView, xnode.A);
 
 ResourceTabHeaderView.prototype.setLabel = function(label) {
-	this.label = label;
-	this.refresh();
+	this.innerHTML = label;
 }
 
-ResourceTabHeaderView.prototype.refresh = function() {
-	if (this.label && this.targetId) {
-		this.innerHTML = "<a href='#" + this.targetId + "'>" + this.label + "</a>";
-	}
+ResourceTabHeaderView.prototype.setActive = function(active) {
+	if (active)
+		this.className = "active item";
+
+	else
+		this.className = "item";
 }
 
 module.exports = ResourceTabHeaderView;

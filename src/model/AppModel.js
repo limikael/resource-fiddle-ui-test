@@ -19,22 +19,15 @@ AppModel.prototype.getCategoryCollection = function() {
 }
 
 /**
- * Get something usable for a unique id.
- * @method getNextId
- */
-AppModel.prototype.getNextId = function() {
-	this.idCount++;
-
-	return "elem" + this.idCount;
-}
-
-/**
  * Add category model.
  * @method addCategoryModel
  */
 AppModel.prototype.addCategoryModel = function(categoryModel) {
 	categoryModel.setParentModel(this);
 	this.categoryCollection.addItem(categoryModel);
+
+	if (this.categoryCollection.getLength() == 1)
+		categoryModel.setActive(true);
 }
 
 module.exports = AppModel;
