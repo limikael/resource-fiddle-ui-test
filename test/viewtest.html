@@ -1,17 +1,89 @@
-<html>
-	<link rel="stylesheet" href="jquery-ui-1.11.2/jquery-ui.css">
-	<script src="jquery-ui-1.11.2/external/jquery/jquery.js"></script>
-	<script src="jquery-ui-1.11.2/jquery-ui.js"></script>
-	<script src="fiddleui.bundle.js"></script>
-	<script>
-		window.onload=function() {
-			var app = new fiddleui.App();
-			document.body.appendChild(app);
+<html style="padding: 0; margin: 0; height: 100%">
+	<link rel="stylesheet" href="semantic-ui/semantic.min.css">
+	<script src="jquery.min.js"></script>
+	<script src="semantic-ui/semantic.min.js"></script>
 
-			var model=app.getModel();
-			model.addCategoryModel(new fiddleui.CategoryModel("hello"));
-			model.addCategoryModel(new fiddleui.CategoryModel("world"));
-			model.addCategoryModel(new fiddleui.CategoryModel("test"));
-		}
+	<body style="padding: 0px; margin: 0; overflow: hidden; height: 100%">
+		hello
+<!--		<div class="ui grid">-->
+			<div style="position: absolute; left: 10px; top: 50px; bottom: 15px; width: calc(50% - 15px)">
+				<div class="ui top attached tabular menu">
+				 	<a class="active item" data-tab="first">Gameplay Table</a>
+					<a class="item" data-tab="second">User interface</a>
+					<a class="item" data-tab="third">Third</a>
+				</div>
+
+				<div class="ui bottom attached active tab segment" data-tab="first">
+					<div style="height: calc(100% - 60px); position: relative; padding:1px; overflow: scroll">
+						<div class="ui styled fluid accordion">
+							<div class="active title">
+								<i class="dropdown icon"></i>
+								Table background
+							</div>
+							<div class="active content">
+								Hello this is level 1
+							</div>
+
+							<div class="title">
+								<i class="dropdown icon"></i>
+								Level 2
+							</div>
+							<div class="content">
+								Hello this is level 2<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+								more info...<br/>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="ui bottom attached tab segment" data-tab="second">
+					Second
+				</div>
+				<div class="ui bottom attached tab segment" data-tab="third">
+					Third
+				</div>
+			</div>
+			<div style="position: absolute; right: 10px; top: 50px; bottom: 15px; width: calc(50% - 15px)">
+				<div class="ui top attached tabular menu">
+				 	<a class="active item" data-tab="first-t">Test case</a>
+					<a class="item" data-tab="second-t">Test case</a>
+					<a class="item" data-tab="third-t">Test case</a>
+				</div>
+
+				<div class="ui bottom attached active tab segment" data-tab="first-t">
+					<div style="height: calc(100% - 60px); position: relative; padding:1px; overflow: scroll">
+						hello
+					</div>
+				</div>
+
+				<div class="ui bottom attached tab segment" data-tab="second-t">
+					Second
+				</div>
+				<div class="ui bottom attached tab segment" data-tab="third-t">
+					Third
+				</div>
+			</div>
+<!--		</div>-->
+	</body>
+
+	<script>
+		$('.menu .item').tab();
+		$('.ui.accordion').accordion();
 	</script>
 </html>
