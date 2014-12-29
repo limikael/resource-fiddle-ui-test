@@ -3,56 +3,32 @@ var inherits = require("inherits");
 
 function ResourceTabView() {
 	xnode.Div.call(this);
+	this.className = "ui bottom attached active tab segment";
 
-//	this.innerHTML="hello";
+	//this.innerHTML = "hello";
 
-/*	this.container=new xnode.Div();
-	this.container.style.position = "absolute";
-	this.container.style.left = 10;
-	this.container.style.right = 10;
-	this.container.style.top = 60;
-	this.container.style.bottom = 10;
-	this.container.style.background="#ff0000";
-	this.container.innerHTML="hello";
-
-	this.appendChild(this.container);
-
-	this.accordion = new xnodeui.Accordion();
-	this.accordion.style.position = "absolute";
-	this.accordion.style.left = 5;
-	this.accordion.style.right = 5;
-	this.accordion.style.top = 5;
-	this.accordion.style.bottom = 5;
-
-	this.accordion.appendChild(new xnode.Div("hello"));
-	this.accordion.appendChild(new xnode.Div("some content...<br/>blalabl"));
-	this.accordion.appendChild(new xnode.Div("hello 2"));
-	this.accordion.appendChild(new xnode.Div("some more content...<br/>blalabl and so on...<br/>blalabl and so on...<br/>blalabl and so on...<br/>"));
-
-
-	this.accordion.heightStyle = "fill";
-	this.accordion.collapsible = false;
-	this.accordion.autoHeight = false;
-
-	this.container.appendChild(this.accordion);
-
-	var scope = this;
-
-	setTimeout(function() {
-		scope.accordion.heightStyle = "fill";
-		scope.accordion.collapsible = false;
-		scope.accordion.refresh();
-	}, 0);*/
+	this.inner = new xnode.Div();
+	this.inner.style.position = "relative";
+	this.inner.style.height = "calc(100% - 65px)";
+	this.inner.style.padding = "1px";
+	this.inner.style.overflowY = "scroll";
+	this.appendChild(this.inner);
 }
 
 inherits(ResourceTabView, xnode.Div);
 
-ResourceTabView.prototype.setData = function(data) {
-	if (data) {
-			this.id = data.id;
-
-			//this.innerHTML = "hello world: " + data.label;
+ResourceTabView.prototype.setActive = function(active) {
+	if (active) {
+		this.style.display = "block";
+		this.className = "ui bottom attached active tab segment active";
+	} else {
+		this.style.display = "none";
+		this.className = "ui bottom attached active tab segment";
 	}
+}
+
+ResourceTabView.prototype.setLabel = function(label) {
+	//this.innerHTML = label;
 }
 
 module.exports = ResourceTabView;

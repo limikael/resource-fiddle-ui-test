@@ -17,6 +17,14 @@ function ResourcePaneView() {
 	this.style.width = "50%";
 	this.style.bottom = "10px";
 
+	this.tabHeaders = new xnodec.CollectionView();
+	this.tabHeaders.className = "ui top attached tabular menu";
+	this.tabHeaders.setItemRendererClass(ResourceTabHeaderView);
+	this.appendChild(this.tabHeaders);
+
+	this.tabsManager = new xnodec.CollectionViewManager(this);
+	this.tabsManager.setItemRendererClass(ResourceTabView);
+
 	/*	this.tabs = new xnodeui.Tabs();
 		this.tabs.style.position = "absolute";
 		this.tabs.style.left = 10;
@@ -30,21 +38,6 @@ function ResourcePaneView() {
 
 		this.tabsContentManager = new xnodec.CollectionViewManager(this.tabs);
 		this.tabsContentManager.setItemRendererClass(ResourceTabView);*/
-
-	this.tabs = new xnodec.CollectionView();
-	this.tabs.className = "ui top attached tabular menu";
-	this.tabs.setItemRendererClass(ResourceTabHeaderView);
-	this.appendChild(this.tabs);
-
-	/*	var a = new xnode.A();
-		a.innerHTML = "hello";
-		a.className = "active item";
-		this.tabs.appendChild(a);
-
-		var a = new xnode.A();
-		a.innerHTML = "hello";
-		a.className = "item";
-		this.tabs.appendChild(a);*/
 }
 
 inherits(ResourcePaneView, xnode.Div);
@@ -53,7 +46,9 @@ inherits(ResourcePaneView, xnode.Div);
  * Set tabs collection.
  */
 ResourcePaneView.prototype.setTabsCollection = function(collection) {
-	this.tabs.setDataSource(collection);
+	this.tabHeaders.setDataSource(collection);
+	this.tabsManager.setDataSource(collection);
+
 	/*	this.tabsContentManager.setDataSource(collection);
 
 		var scope=this;
@@ -68,7 +63,15 @@ ResourcePaneView.prototype.setTabsCollection = function(collection) {
  * @method getTabsHeaderManager
  */
 ResourcePaneView.prototype.getTabsHeaderManager = function() {
-	return this.tabs;
+	return this.tabHeaders;
+}
+
+/**
+ * Get tabs header manager.
+ * @method getTabsManager
+ */
+ResourcePaneView.prototype.getTabsManager = function() {
+	return this.tabsManager;
 }
 
 module.exports = ResourcePaneView;
