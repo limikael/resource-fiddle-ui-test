@@ -1,11 +1,15 @@
 var xnode = require("xnode");
+var xnodec = require("xnodecollection");
 var inherits = require("inherits");
+var ResourceCategoryView = require("./ResourceCategoryView");
 
+/**
+ * The view for the content that goes into one tab.
+ * @class ResourceTabView
+ */
 function ResourceTabView() {
 	xnode.Div.call(this);
 	this.className = "ui bottom attached active tab segment";
-
-	//this.innerHTML = "hello";
 
 	this.inner = new xnode.Div();
 	this.inner.style.position = "relative";
@@ -13,10 +17,19 @@ function ResourceTabView() {
 	this.inner.style.padding = "1px";
 	this.inner.style.overflowY = "scroll";
 	this.appendChild(this.inner);
+
+	this.accordion = new xnodec.CollectionView();
+	this.accordion.setItemRendererClass(ResourceCategoryView);
+	this.accordion.className = "ui styled fluid accordion";
+	this.inner.appendChild(this.accordion);
 }
 
 inherits(ResourceTabView, xnode.Div);
 
+/**
+ * Should this be the active tab?
+ * @method setActive
+ */
 ResourceTabView.prototype.setActive = function(active) {
 	if (active) {
 		this.style.display = "block";
@@ -27,8 +40,21 @@ ResourceTabView.prototype.setActive = function(active) {
 	}
 }
 
-ResourceTabView.prototype.setLabel = function(label) {
-	//this.innerHTML = label;
+/**
+ * Set category collection.
+ * @method setCategoryCollection
+ */
+ResourceTabView.prototype.setCategoryCollection = function(collection) {
+	this.accordion.setDataSource(collection);
 }
+
+/**
+ * Get category manager.
+ * @method getCategoryManager
+ */
+ResourceTabView.prototype.getCategoryManager = function() {
+	return this.accordion;
+}
+
 
 module.exports = ResourceTabView;

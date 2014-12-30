@@ -24,38 +24,17 @@ function ResourcePaneView() {
 
 	this.tabsManager = new xnodec.CollectionViewManager(this);
 	this.tabsManager.setItemRendererClass(ResourceTabView);
-
-	/*	this.tabs = new xnodeui.Tabs();
-		this.tabs.style.position = "absolute";
-		this.tabs.style.left = 10;
-		this.tabs.style.right = 5;
-		this.tabs.style.top = 10;
-		this.tabs.style.bottom = 10;
-		this.appendChild(this.tabs);
-
-		this.tabsHeaderManager = new xnodec.CollectionViewManager(this.tabs.ul);
-		this.tabsHeaderManager.setItemRendererClass(ResourceTabHeaderView);
-
-		this.tabsContentManager = new xnodec.CollectionViewManager(this.tabs);
-		this.tabsContentManager.setItemRendererClass(ResourceTabView);*/
 }
 
 inherits(ResourcePaneView, xnode.Div);
 
 /**
  * Set tabs collection.
+ * @method setTabsCollection
  */
 ResourcePaneView.prototype.setTabsCollection = function(collection) {
 	this.tabHeaders.setDataSource(collection);
 	this.tabsManager.setDataSource(collection);
-
-	/*	this.tabsContentManager.setDataSource(collection);
-
-		var scope=this;
-
-		collection.on("change",function() {
-			scope.tabs.refresh();
-		});*/
 }
 
 /**

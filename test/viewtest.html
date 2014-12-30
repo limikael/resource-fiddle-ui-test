@@ -9,7 +9,12 @@
 			document.body.appendChild(app);
 
 			var model=app.getModel();
-			model.addCategoryModel(new fiddleui.CategoryModel("hello"));
+			var c=model.addCategoryModel(new fiddleui.CategoryModel("hello"));
+
+			c.addCategoryModel(new fiddleui.CategoryModel("test1"));
+			c.addCategoryModel(new fiddleui.CategoryModel("test2"));
+			c.addCategoryModel(new fiddleui.CategoryModel("test3"));
+
 			model.addCategoryModel(new fiddleui.CategoryModel("world"));
 			model.addCategoryModel(new fiddleui.CategoryModel("test"));
 		}

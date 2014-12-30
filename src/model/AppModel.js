@@ -28,6 +28,8 @@ AppModel.prototype.addCategoryModel = function(categoryModel) {
 
 	if (this.categoryCollection.getLength() == 1)
 		categoryModel.setActive(true);
+
+	return categoryModel;
 }
 
 module.exports = AppModel;

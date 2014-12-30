@@ -1,6 +1,7 @@
 var AppModel = require("./AppModel");
 var EventDispatcher = require("yaed");
 var inherits = require("inherits");
+var xnodec = require("xnodecollection");
 
 /**
  * Get category model.
@@ -10,6 +11,7 @@ function CategoryModel(label) {
 	this.label = label;
 	this.parentModel = null;
 	this.active = false;
+	this.categoryCollection = new xnodec.Collection();
 }
 
 inherits(CategoryModel, EventDispatcher);
@@ -70,6 +72,28 @@ CategoryModel.prototype.setActive = function(value) {
  */
 CategoryModel.prototype.isActive = function() {
 	return this.active;
+}
+
+/**
+ * Get category collection for sub categories.
+ * @method getCategoryCollection
+ */
+CategoryModel.prototype.getCategoryCollection = function() {
+	return this.categoryCollection;
+}
+
+/**
+ * Add sub category model.
+ * @method addCategoryModel
+ */
+CategoryModel.prototype.addCategoryModel = function(categoryModel) {
+	categoryModel.setParentModel(this);
+	this.categoryCollection.addItem(categoryModel);
+
+	if (this.categoryCollection.getLength() == 1)
+		this.categoryCollection.getItemAt(0).setActive(true);
+
+	return categoryModel;
 }
 
 module.exports = CategoryModel;
