@@ -15,7 +15,6 @@ function ResourceCategoryController(categoryView) {
 ResourceCategoryController.prototype.setData = function(categoryModel) {
 	if (this.categoryModel) {
 		this.categoryModel.off("change", this.onCategoryModelChange, this);
-		//this.categoryView.setCategoryCollection(null);
 	}
 
 	this.categoryModel = categoryModel;

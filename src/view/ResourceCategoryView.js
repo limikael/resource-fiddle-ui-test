@@ -2,6 +2,10 @@ var inherits = require("inherits");
 var xnode = require("xnode");
 var EventDispatcher = require("yaed");
 
+/**
+ * The view of one resource category.
+ * @class ResourceCategoryView
+ */
 function ResourceCategoryView() {
 	xnode.Div.call(this);
 
@@ -28,10 +32,18 @@ function ResourceCategoryView() {
 inherits(ResourceCategoryView, xnode.Div);
 EventDispatcher.init(ResourceCategoryView);
 
+/**
+ * Set the label.
+ * @method setLabel
+ */
 ResourceCategoryView.prototype.setLabel = function(label) {
 	this.titleSpan.innerHTML = label;
 }
 
+/**
+ * Should this be active or not?
+ * @method setActive
+ */
 ResourceCategoryView.prototype.setActive = function(active) {
 	if (active) {
 		this.title.className = "active title";
@@ -42,10 +54,18 @@ ResourceCategoryView.prototype.setActive = function(active) {
 	}
 }
 
+/**
+ * The description.
+ * @method setDescription
+ */
 ResourceCategoryView.prototype.setDescription = function(description) {
 	this.descriptionP.innerHTML = description;
 }
 
+/**
+ * The title was clicked. Dispatch further.
+ * @method onTitleClick
+ */
 ResourceCategoryView.prototype.onTitleClick = function() {
 	this.trigger("titleClick");
 }
