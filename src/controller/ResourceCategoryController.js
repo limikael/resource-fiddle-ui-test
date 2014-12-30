@@ -4,7 +4,6 @@
  */
 function ResourceCategoryController(categoryView) {
 	this.categoryView = categoryView;
-	//	this.categoryView.getCategoryManager().setItemControllerClass(ResourceCategoryController);
 
 	this.categoryView.on("titleClick", this.onCategoryViewTitleClick, this);
 }
@@ -25,8 +24,7 @@ ResourceCategoryController.prototype.setData = function(categoryModel) {
 		this.categoryModel.on("change", this.onCategoryModelChange, this);
 		this.categoryView.setActive(categoryModel.isActive());
 		this.categoryView.setLabel(categoryModel.getLabel());
-
-		//this.tabView.setCategoryCollection(categoryModel.getCategoryCollection());
+		this.categoryView.setDescription(this.categoryModel.getDescription());
 	}
 }
 
@@ -36,13 +34,15 @@ ResourceCategoryController.prototype.setData = function(categoryModel) {
  */
 ResourceCategoryController.prototype.onCategoryModelChange = function() {
 	this.categoryView.setActive(this.categoryModel.isActive());
+	this.categoryView.setDescription(this.categoryModel.getDescription());
 }
 
 /**
- *
+ * Title click. Toggle the active state.
+ * @method onCategoryViewTitleClick
  */
-ResourceCategoryController.prototype.onCategoryViewTitleClick=function() {
-	this.categoryModel.setActive(true);
+ResourceCategoryController.prototype.onCategoryViewTitleClick = function() {
+	this.categoryModel.setActive(!this.categoryModel.isActive());
 }
 
 module.exports = ResourceCategoryController;

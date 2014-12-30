@@ -20,6 +20,9 @@ function ResourceCategoryView() {
 	this.content = new xnode.Div();
 	this.content.className = "content";
 	this.appendChild(this.content);
+
+	this.descriptionP = new xnode.P();
+	this.content.appendChild(this.descriptionP);
 }
 
 inherits(ResourceCategoryView, xnode.Div);
@@ -37,6 +40,10 @@ ResourceCategoryView.prototype.setActive = function(active) {
 		this.title.className = "title";
 		this.content.className = "content";
 	}
+}
+
+ResourceCategoryView.prototype.setDescription = function(description) {
+	this.descriptionP.innerHTML = description;
 }
 
 ResourceCategoryView.prototype.onTitleClick = function() {

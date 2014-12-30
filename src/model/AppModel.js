@@ -1,4 +1,5 @@
 var xnodec = require("xnodecollection");
+var CategoryModel = require("./CategoryModel");
 
 /**
  * AppModel
@@ -30,6 +31,16 @@ AppModel.prototype.addCategoryModel = function(categoryModel) {
 		categoryModel.setActive(true);
 
 	return categoryModel;
+}
+
+/**
+ * Create and add a category model.
+ * @method createCategory
+ */
+AppModel.prototype.createCategory = function(title) {
+	var categoryModel = new CategoryModel(title);
+
+	return this.addCategoryModel(categoryModel);
 }
 
 module.exports = AppModel;

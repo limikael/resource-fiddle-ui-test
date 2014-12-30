@@ -9,14 +9,17 @@
 			document.body.appendChild(app);
 
 			var model=app.getModel();
-			var c=model.addCategoryModel(new fiddleui.CategoryModel("hello"));
+			var c=model.createCategory("Table");
+			c.setDescription("The properties on this tab control the appearance of the table.");
 
-			c.addCategoryModel(new fiddleui.CategoryModel("test1"));
-			c.addCategoryModel(new fiddleui.CategoryModel("test2"));
-			c.addCategoryModel(new fiddleui.CategoryModel("test3"));
+			var sc=c.createCategory("Background");
+			sc.setDescription("This is the table background, as well as the offset from top left of the game.");
 
-			model.addCategoryModel(new fiddleui.CategoryModel("world"));
-			model.addCategoryModel(new fiddleui.CategoryModel("test"));
+			c.createCategory("Seats");
+			c.createCategory("Chips");
+
+			model.createCategory("Cards");
+			model.createCategory("User Interface");
 		}
 	</script>
 	<body style="padding: 0; margin: 0; height: 100%"></body>

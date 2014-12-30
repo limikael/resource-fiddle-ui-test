@@ -24,6 +24,7 @@ ResourceTabController.prototype.setData = function(categoryModel) {
 	if (this.categoryModel) {
 		this.categoryModel.on("change", this.onCategoryModelChange, this);
 		this.tabView.setActive(categoryModel.isActive());
+		this.tabView.setDescription(categoryModel.getDescription());
 		this.tabView.setCategoryCollection(categoryModel.getCategoryCollection());
 	}
 }
@@ -34,6 +35,7 @@ ResourceTabController.prototype.setData = function(categoryModel) {
  */
 ResourceTabController.prototype.onCategoryModelChange = function() {
 	this.tabView.setActive(this.categoryModel.isActive());
+	this.tabView.setDescription(this.categoryModel.getDescription());
 }
 
 module.exports = ResourceTabController;

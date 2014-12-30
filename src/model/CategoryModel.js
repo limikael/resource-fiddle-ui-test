@@ -12,6 +12,7 @@ function CategoryModel(label) {
 	this.parentModel = null;
 	this.active = false;
 	this.categoryCollection = new xnodec.Collection();
+	this.description = "";
 }
 
 inherits(CategoryModel, EventDispatcher);
@@ -30,6 +31,24 @@ CategoryModel.prototype.setParentModel = function(value) {
  */
 CategoryModel.prototype.getLabel = function() {
 	return this.label;
+}
+
+/**
+ * Get description.
+ * @method getLabel
+ */
+CategoryModel.prototype.getDescription = function() {
+	return this.description;
+}
+
+/**
+ * Set description.
+ * @method getLabel
+ */
+CategoryModel.prototype.setDescription = function(description) {
+	this.description = description;
+
+	this.trigger("change");
 }
 
 /**
@@ -90,10 +109,22 @@ CategoryModel.prototype.addCategoryModel = function(categoryModel) {
 	categoryModel.setParentModel(this);
 	this.categoryCollection.addItem(categoryModel);
 
-	if (this.categoryCollection.getLength() == 1)
-		this.categoryCollection.getItemAt(0).setActive(true);
+	/*	if (this.parentModel instanceof AppModel) {
+			if (this.categoryCollection.getLength() == 1)
+				this.categoryCollection.getItemAt(0).setActive(true);
+		}*/
 
 	return categoryModel;
+}
+
+/**
+ * Create and add a category model.
+ * @method createCategory
+ */
+CategoryModel.prototype.createCategory = function(title) {
+	var categoryModel = new CategoryModel(title);
+
+	return this.addCategoryModel(categoryModel);
 }
 
 module.exports = CategoryModel;

@@ -18,6 +18,9 @@ function ResourceTabView() {
 	this.inner.style.overflowY = "scroll";
 	this.appendChild(this.inner);
 
+	this.descriptionP = new xnode.P();
+	this.inner.appendChild(this.descriptionP);
+
 	this.accordion = new xnodec.CollectionView();
 	this.accordion.setItemRendererClass(ResourceCategoryView);
 	this.accordion.className = "ui styled fluid accordion";
@@ -56,5 +59,12 @@ ResourceTabView.prototype.getCategoryManager = function() {
 	return this.accordion;
 }
 
+/**
+ * Set description.
+ * @method setDescription
+ */
+ResourceTabView.prototype.setDescription = function(description) {
+	this.descriptionP.innerHTML = description;
+}
 
 module.exports = ResourceTabView;

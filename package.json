@@ -7,7 +7,7 @@
     "grunt-browserify": "^3.2.1",
     "inherits": "^2.0.1",
     "semantic-ui": "^1.4.1",
-    "xnode": "^0.0.9",
+    "xnode": "^0.0.10",
     "xnodecollection": "^0.0.6",
     "yaed": "^1.0.1"
   },
