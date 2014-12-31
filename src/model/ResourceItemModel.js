@@ -2,10 +2,15 @@
  * ResourceItemModel
  * @class ResourceItemModel
  */
-function ResourceItemModel(key, defaultValue, value) {
+function ResourceItemModel(key, defaultValue, value, type) {
 	this.key = key;
 	this.defaultValue = defaultValue;
 	this.value = value;
+
+	this.itemType = type;
+
+	if (!this.itemType)
+		this.itemType = "position";
 }
 
 /**
@@ -38,6 +43,14 @@ ResourceItemModel.prototype.getValue = function() {
  */
 ResourceItemModel.prototype.setValue = function(value) {
 	this.value = value;
+}
+
+/**
+ * Get item type.
+ * @method getItemType
+ */
+ResourceItemModel.prototype.getItemType = function() {
+	return this.itemType;
 }
 
 module.exports = ResourceItemModel;

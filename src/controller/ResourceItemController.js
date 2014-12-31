@@ -10,7 +10,7 @@ ResourceItemController.prototype.setData = function(itemModel) {
 		this.itemView.setDefaultValue(this.itemModel.getDefaultValue());
 		this.itemView.setValue(this.itemModel.getValue());
 
-		this.itemView.setItemType("position");
+		this.itemView.setItemType(this.itemModel.getItemType());
 	}
 }
 

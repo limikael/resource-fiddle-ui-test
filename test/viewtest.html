@@ -15,8 +15,9 @@
 			var sc=c.createCategory("Background");
 			sc.setDescription("This is the table background, as well as the offset from top left of the game.");
 
-			sc.addResourceItemModel(new fiddleui.ResourceItemModel("tableBackground","0,5","100,100"));
-			sc.addResourceItemModel(new fiddleui.ResourceItemModel("tableBackgroundOffset","10,10","20,20"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("tableBackground","a","b","image"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("tableBackgroundOffset","10,10","20,20","position"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("tableBackgroundColor","#000080","#808080","color"));
 
 			c.createCategory("Seats");
 			c.createCategory("Chips");

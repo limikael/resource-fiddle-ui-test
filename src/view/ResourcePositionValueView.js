@@ -1,7 +1,7 @@
 var inherits = require("inherits");
 var xnode = require("xnode");
 
-function ResourceColorValueView() {
+function ResourcePositionValueView() {
 	xnode.Div.call(this);
 
 	this.defaultValueView = new xnode.Div();
@@ -25,14 +25,14 @@ function ResourceColorValueView() {
 	this.valueDiv.appendChild(this.valueInput);
 }
 
-inherits(ResourceColorValueView, xnode.Div);
+inherits(ResourcePositionValueView, xnode.Div);
 
-ResourceColorValueView.prototype.setDefaultValue = function(defaultValue) {
+ResourcePositionValueView.prototype.setDefaultValue = function(defaultValue) {
 	this.defaultValueView.innerHTML = defaultValue;
 }
 
-ResourceColorValueView.prototype.setValue = function(value) {
+ResourcePositionValueView.prototype.setValue = function(value) {
 	this.valueInput.value = value;
 }
 
-module.exports = ResourceColorValueView;
+module.exports = ResourcePositionValueView;

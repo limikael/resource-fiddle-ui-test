@@ -1,6 +1,6 @@
 var inherits = require("inherits");
 var xnode = require("xnode");
-var ResourceColorValueView = require("./ResourceColorValueView");
+var ResourcePositionValueView = require("./ResourcePositionValueView");
 
 function ResourceItemView() {
 	xnode.Tr.call(this);
@@ -20,22 +20,6 @@ function ResourceItemView() {
 	this.itemType = null;
 	this.value = null;
 	this.defaultValue = null;
-
-	/*this.defaultTd = new xnode.Td();
-	this.defaultTd.style.width = "25%";
-	this.appendChild(this.defaultTd);
-
-	this.valueTd = new xnode.Td();
-	this.valueTd.style.width = "25%";
-	this.appendChild(this.valueTd);
-
-	this.valueDiv = new xnode.Div();
-	this.valueDiv.className = "ui input fluid mini";
-	this.valueTd.appendChild(this.valueDiv);
-
-	this.valueInput = new xnode.Input();
-	this.valueInput.type = "text";
-	this.valueDiv.appendChild(this.valueInput);*/
 }
 
 inherits(ResourceItemView, xnode.Tr);
@@ -70,7 +54,7 @@ ResourceItemView.prototype.setItemType = function(itemType) {
 
 	switch (this.itemType) {
 		case "position":
-			this.valueView = new ResourceColorValueView();
+			this.valueView = new ResourcePositionValueView();
 	}
 
 	if (this.valueView) {
