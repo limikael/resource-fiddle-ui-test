@@ -1,4 +1,6 @@
 var ResourceCategoryController = require("./ResourceCategoryController");
+var ResourceCategoryView = require("../view/ResourceCategoryView");
+var xnodec = require("xnodecollection");
 
 /**
  * Control one resource tab.
@@ -6,7 +8,11 @@ var ResourceCategoryController = require("./ResourceCategoryController");
  */
 function ResourceTabController(tabView) {
 	this.tabView = tabView;
-	this.tabView.getCategoryManager().setItemControllerClass(ResourceCategoryController);
+
+	this.categoryManager = new xnodec.CollectionViewManager();
+	this.categoryManager.setTarget(tabView.getCategoryHolder());
+	this.categoryManager.setItemRendererClass(ResourceCategoryView);
+	this.categoryManager.setItemControllerClass(ResourceCategoryController);
 }
 
 /**
@@ -16,7 +22,7 @@ function ResourceTabController(tabView) {
 ResourceTabController.prototype.setData = function(categoryModel) {
 	if (this.categoryModel) {
 		this.categoryModel.off("change", this.onCategoryModelChange, this);
-		this.tabView.setCategoryCollection(null);
+		this.categoryManager.setDataSource(null);
 	}
 
 	this.categoryModel = categoryModel;
@@ -25,7 +31,8 @@ ResourceTabController.prototype.setData = function(categoryModel) {
 		this.categoryModel.on("change", this.onCategoryModelChange, this);
 		this.tabView.setActive(categoryModel.isActive());
 		this.tabView.setDescription(categoryModel.getDescription());
-		this.tabView.setCategoryCollection(categoryModel.getCategoryCollection());
+
+		this.categoryManager.setDataSource(categoryModel.getCategoryCollection());
 	}
 }
 

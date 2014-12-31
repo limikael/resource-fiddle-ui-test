@@ -21,8 +21,7 @@ function ResourceTabView() {
 	this.descriptionP = new xnode.P();
 	this.inner.appendChild(this.descriptionP);
 
-	this.accordion = new xnodec.CollectionView();
-	this.accordion.setItemRendererClass(ResourceCategoryView);
+	this.accordion = new xnode.Div();
 	this.accordion.className = "ui styled fluid accordion";
 	this.inner.appendChild(this.accordion);
 }
@@ -44,27 +43,35 @@ ResourceTabView.prototype.setActive = function(active) {
 }
 
 /**
- * Set category collection.
- * @method setCategoryCollection
- */
-ResourceTabView.prototype.setCategoryCollection = function(collection) {
-	this.accordion.setDataSource(collection);
-}
-
-/**
- * Get category manager.
- * @method getCategoryManager
- */
-ResourceTabView.prototype.getCategoryManager = function() {
-	return this.accordion;
-}
-
-/**
  * Set description.
  * @method setDescription
  */
 ResourceTabView.prototype.setDescription = function(description) {
 	this.descriptionP.innerHTML = description;
 }
+
+/**
+ * Get div holding the categories.
+ * @method getCategoryHolder
+ */
+ResourceTabView.prototype.getCategoryHolder = function() {
+	return this.accordion;
+}
+
+/**
+ * Set category collection.
+ * @method setCategoryCollection
+ */
+/*ResourceTabView.prototype.setCategoryCollection = function(collection) {
+	this.accordion.setDataSource(collection);
+}*/
+
+/**
+ * Get category manager.
+ * @method getCategoryManager
+ */
+/*ResourceTabView.prototype.getCategoryManager = function() {
+	return this.accordion;
+}*/
 
 module.exports = ResourceTabView;

@@ -17,40 +17,27 @@ function ResourcePaneView() {
 	this.style.width = "50%";
 	this.style.bottom = "10px";
 
-	this.tabHeaders = new xnodec.CollectionView();
+	this.tabHeaders = new xnode.Div();
 	this.tabHeaders.className = "ui top attached tabular menu";
-	this.tabHeaders.setItemRendererClass(ResourceTabHeaderView);
 	this.appendChild(this.tabHeaders);
-
-	this.tabsManager = new xnodec.CollectionViewManager(this);
-	this.tabsManager.setItemRendererClass(ResourceTabView);
 }
 
 inherits(ResourcePaneView, xnode.Div);
 
 /**
- * Set tabs collection.
- * @method setTabsCollection
+ * Get holder for the tab headers.
+ * @method getTabHeaderHolder
  */
-ResourcePaneView.prototype.setTabsCollection = function(collection) {
-	this.tabHeaders.setDataSource(collection);
-	this.tabsManager.setDataSource(collection);
-}
-
-/**
- * Get tabs header manager.
- * @method getTabsHeaderManager
- */
-ResourcePaneView.prototype.getTabsHeaderManager = function() {
+ResourcePaneView.prototype.getTabHeaderHolder = function() {
 	return this.tabHeaders;
 }
 
 /**
- * Get tabs header manager.
- * @method getTabsManager
+ * Get tab holder.
+ * @method getTabHolder
  */
-ResourcePaneView.prototype.getTabsManager = function() {
-	return this.tabsManager;
+ResourcePaneView.prototype.getTabHolder = function() {
+	return this;
 }
 
 module.exports = ResourcePaneView;

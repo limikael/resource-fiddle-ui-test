@@ -12,6 +12,7 @@ function CategoryModel(label) {
 	this.parentModel = null;
 	this.active = false;
 	this.categoryCollection = new xnodec.Collection();
+	this.itemCollection = new xnodec.Collection();
 	this.description = "";
 }
 
@@ -102,17 +103,20 @@ CategoryModel.prototype.getCategoryCollection = function() {
 }
 
 /**
+ * Get item collection.
+ * @method getItemCollection
+ */
+CategoryModel.prototype.getItemCollection = function() {
+	return this.itemCollection;
+}
+
+/**
  * Add sub category model.
  * @method addCategoryModel
  */
 CategoryModel.prototype.addCategoryModel = function(categoryModel) {
 	categoryModel.setParentModel(this);
 	this.categoryCollection.addItem(categoryModel);
-
-	/*	if (this.parentModel instanceof AppModel) {
-			if (this.categoryCollection.getLength() == 1)
-				this.categoryCollection.getItemAt(0).setActive(true);
-		}*/
 
 	return categoryModel;
 }
@@ -125,6 +129,14 @@ CategoryModel.prototype.createCategory = function(title) {
 	var categoryModel = new CategoryModel(title);
 
 	return this.addCategoryModel(categoryModel);
+}
+
+/**
+ * Add resource item model.
+ * @method addResourceItemModel
+ */
+CategoryModel.prototype.addResourceItemModel = function(resourceItemModel) {
+	this.itemCollection.addItem(resourceItemModel);
 }
 
 module.exports = CategoryModel;

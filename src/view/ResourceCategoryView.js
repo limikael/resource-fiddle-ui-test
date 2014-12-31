@@ -1,6 +1,7 @@
 var inherits = require("inherits");
 var xnode = require("xnode");
 var EventDispatcher = require("yaed");
+var ResourceItemView = require("./ResourceItemView");
 
 /**
  * The view of one resource category.
@@ -27,6 +28,13 @@ function ResourceCategoryView() {
 
 	this.descriptionP = new xnode.P();
 	this.content.appendChild(this.descriptionP);
+
+	this.itemTable = new xnode.Table();
+	this.itemTable.className = "ui table unstackable definition";
+	this.content.appendChild(this.itemTable);
+
+	this.itemTableBody = new xnode.Tbody();
+	this.itemTable.appendChild(this.itemTableBody);
 }
 
 inherits(ResourceCategoryView, xnode.Div);
@@ -68,6 +76,14 @@ ResourceCategoryView.prototype.setDescription = function(description) {
  */
 ResourceCategoryView.prototype.onTitleClick = function() {
 	this.trigger("titleClick");
+}
+
+/**
+ * Get holder for the items.
+ * @method getItemHolder
+ */
+ResourceCategoryView.prototype.getItemHolder = function() {
+	return this.itemTableBody;
 }
 
 module.exports = ResourceCategoryView;
