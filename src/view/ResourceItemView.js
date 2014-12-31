@@ -1,6 +1,7 @@
 var inherits = require("inherits");
 var xnode = require("xnode");
 var ResourcePositionValueView = require("./ResourcePositionValueView");
+var ResourceImageValueView = require("./ResourceImageValueView");
 
 function ResourceItemView() {
 	xnode.Tr.call(this);
@@ -12,7 +13,7 @@ function ResourceItemView() {
 	this.appendChild(this.keyTd);
 
 	this.valueTd = new xnode.Td();
-	this.valueTd.style.position="relative";
+	this.valueTd.style.position = "relative";
 	this.valueTd.style.width = "50%";
 	this.appendChild(this.valueTd);
 
@@ -55,6 +56,11 @@ ResourceItemView.prototype.setItemType = function(itemType) {
 	switch (this.itemType) {
 		case "position":
 			this.valueView = new ResourcePositionValueView();
+			break;
+
+		case "image":
+			this.valueView = new ResourceImageValueView();
+			break;
 	}
 
 	if (this.valueView) {
