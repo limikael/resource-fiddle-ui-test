@@ -1,8 +1,4 @@
-AppView
-ResourcePaneView
+resource-fiddle-ui-test
+=======================
 
-ResourceTabHeaderView
-ResourceCategoryHeaderView
-
-ResourceTabView
-ResourceCategoryView
+testing...
