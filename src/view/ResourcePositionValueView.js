@@ -1,6 +1,10 @@
 var inherits = require("inherits");
 var xnode = require("xnode");
 
+/**
+ * The value view for a position.
+ * @class ResourcePositionValueView
+ */
 function ResourcePositionValueView() {
 	xnode.Div.call(this);
 
@@ -27,10 +31,18 @@ function ResourcePositionValueView() {
 
 inherits(ResourcePositionValueView, xnode.Div);
 
+/**
+ * Set position value for default.
+ * @method setDefaultValue
+ */
 ResourcePositionValueView.prototype.setDefaultValue = function(defaultValue) {
 	this.defaultValueView.innerHTML = defaultValue;
 }
 
+/**
+ * Set position value for current.
+ * @method setValue
+ */
 ResourcePositionValueView.prototype.setValue = function(value) {
 	this.valueInput.value = value;
 }

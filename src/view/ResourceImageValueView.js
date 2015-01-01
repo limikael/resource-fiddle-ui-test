@@ -1,6 +1,10 @@
 var inherits = require("inherits");
 var xnode = require("xnode");
 
+/**
+ * View and edit the value of an image.
+ * @method ResourceImageValueView
+ */
 function ResourceImageValueView() {
 	xnode.Div.call(this);
 
@@ -47,10 +51,18 @@ function ResourceImageValueView() {
 
 inherits(ResourceImageValueView, xnode.Div);
 
+/**
+ * Set url of the image to be shown as default
+ * @method setDefaultValue
+ */
 ResourceImageValueView.prototype.setDefaultValue = function(defaultValue) {
 	this.defaultImage.src = defaultValue;
 }
 
+/**
+ * Set url of image to appear as value.
+ * @method setValue
+ */
 ResourceImageValueView.prototype.setValue = function(value) {
 	this.valueImage.src = value;
 }

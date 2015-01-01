@@ -21,6 +21,10 @@ function AppView() {
 
 inherits(AppView, xnode.Div);
 
+/**
+ * Get a reference to the resource pane.
+ * @method getResourcePaneView
+ */
 AppView.prototype.getResourcePaneView = function() {
 	return this.resourcePaneView;
 }

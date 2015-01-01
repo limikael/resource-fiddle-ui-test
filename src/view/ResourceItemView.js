@@ -2,7 +2,12 @@ var inherits = require("inherits");
 var xnode = require("xnode");
 var ResourcePositionValueView = require("./ResourcePositionValueView");
 var ResourceImageValueView = require("./ResourceImageValueView");
+var ResourceColorValueView = require("./ResourceColorValueView");
 
+/**
+ * Show a table row for each resource item.
+ * @class ResourceItemView
+ */
 function ResourceItemView() {
 	xnode.Tr.call(this);
 
@@ -25,10 +30,17 @@ function ResourceItemView() {
 
 inherits(ResourceItemView, xnode.Tr);
 
+/**
+ * Set key. Will appear in the left column.
+ */
 ResourceItemView.prototype.setKey = function(value) {
 	this.keyTd.innerHTML = value;
 }
 
+/**
+ * Set abstract value to appear as default value.
+ * @method setDefaultValue
+ */
 ResourceItemView.prototype.setDefaultValue = function(defaultValue) {
 	this.defaultValue = defaultValue;
 
@@ -36,6 +48,10 @@ ResourceItemView.prototype.setDefaultValue = function(defaultValue) {
 		this.valueView.setDefaultValue(this.defaultValue);
 }
 
+/**
+ * Set abstract value to appear in the value column.
+ * @method setValue
+ */
 ResourceItemView.prototype.setValue = function(value) {
 	this.value = value;
 
@@ -43,6 +59,11 @@ ResourceItemView.prototype.setValue = function(value) {
 		this.valueView.setValue(this.value);
 }
 
+/**
+ * Set the type of the item. This will create a value
+ * view and populate the right side of the table.
+ * @method setItemType
+ */
 ResourceItemView.prototype.setItemType = function(itemType) {
 	if (itemType == this.itemType)
 		return;
@@ -60,6 +81,10 @@ ResourceItemView.prototype.setItemType = function(itemType) {
 
 		case "image":
 			this.valueView = new ResourceImageValueView();
+			break;
+
+		case "color":
+			this.valueView = new ResourceColorValueView();
 			break;
 	}
 

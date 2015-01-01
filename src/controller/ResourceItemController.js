@@ -1,7 +1,15 @@
+/**
+ * Control a resource item.
+ * @class ResourceItemController
+ */
 function ResourceItemController(itemView) {
 	this.itemView = itemView;
 }
 
+/**
+ * Set item model to serve as data.
+ * @method setData
+ */
 ResourceItemController.prototype.setData = function(itemModel) {
 	this.itemModel = itemModel;
 
