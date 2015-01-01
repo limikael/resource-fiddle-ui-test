@@ -14,15 +14,39 @@
 
 			var sc=c.createCategory("Background");
 			sc.setDescription("This is the table background, as well as the offset from top left of the game.");
-
 			sc.addResourceItemModel(new fiddleui.ResourceItemModel("tableBackground","table.png","table.png","image"));
 			sc.addResourceItemModel(new fiddleui.ResourceItemModel("tableBackgroundOffset","10,10","20,20","position"));
 			sc.addResourceItemModel(new fiddleui.ResourceItemModel("tableBackgroundColor","#000080","#808080","color"));
 
-			c.createCategory("Seats");
-			c.createCategory("Chips");
+			var sc=c.createCategory("Seats");
+			sc.setDescription("This decides where the seats go. There should be an image here as well, but isn't since this is a demo..");
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("seatPosition0","100,100","","position"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("seatPosition1","110,100","","position"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("seatPosition2","120,100","","position"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("seatPosition3","130,100","","position"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("seatPosition4","140,100","","position"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("seatPosition5","150,100","","position"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("seatPosition6","160,100","","position"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("seatPosition7","170,100","","position"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("seatPosition8","180,100","","position"));
+			sc.addResourceItemModel(new fiddleui.ResourceItemModel("seatPosition9","190,100","","position"));
 
-			model.createCategory("Cards");
+			var sc=c.createCategory("Chips");
+			sc.setDescription("This is where the chip images and colors would go...");
+
+			var c=model.createCategory("Cards");
+			c.setDescription("These are all the card images.");
+			var sc=c.createCategory("Backside");
+			sc.setDescription("The card backside image would be here...");
+			var sc=c.createCategory("Diamonds");
+			sc.setDescription("Card images would be here...");
+			var sc=c.createCategory("Clubs");
+			sc.setDescription("Card images would be here...");
+			var sc=c.createCategory("Hearts");
+			sc.setDescription("Card images would be here...");
+			var sc=c.createCategory("Diamonds");
+			sc.setDescription("Card images would be here...");
+
 			model.createCategory("User Interface");
 		}
 	</script>
