@@ -58,20 +58,4 @@ ResourceTabView.prototype.getCategoryHolder = function() {
 	return this.accordion;
 }
 
-/**
- * Set category collection.
- * @method setCategoryCollection
- */
-/*ResourceTabView.prototype.setCategoryCollection = function(collection) {
-	this.accordion.setDataSource(collection);
-}*/
-
-/**
- * Get category manager.
- * @method getCategoryManager
- */
-/*ResourceTabView.prototype.getCategoryManager = function() {
-	return this.accordion;
-}*/
-
 module.exports = ResourceTabView;
